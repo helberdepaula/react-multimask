@@ -14,9 +14,10 @@ npm install react-multimask  # ou yarn add react-multimask
 Importe o pacote:
 ```JSX
 import MultiMask from 'react-multimask';
+```
 
 ## Exemplos de Máscaras:
-
+```JSX
 - Máscaras para CPF e CNPJ:
  <MultiMask masks={['###.###.###.##','##.###.###/####-##']} />
 
