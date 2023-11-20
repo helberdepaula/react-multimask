@@ -1,12 +1,14 @@
 'use client'
-import React, { useState, ChangeEvent, InputHTMLAttributes, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent, InputHTMLAttributes, KeyboardEvent, FocusEvent } from "react";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     masks: string[];
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    defaultValue?: string
 }
 
-const MultiMask = ({ masks, ...rest }: Props) => {
-    const [maskedValue, setMaskedValue] = useState("");
+const MultiMask: React.FC<Props> = ({ masks, onChange, defaultValue, ...rest }: Props) => {
+    const [maskedValue, setMaskedValue] = useState<string | undefined>();
 
     const applyMask = (inputValue: string, mask: string) => {
         let result = "";
@@ -40,13 +42,12 @@ const MultiMask = ({ masks, ...rest }: Props) => {
         if (event.key === "Backspace") {
             // Trata o comportamento específico do "Backspace" na máscara
             event.preventDefault();
-            setMaskedValue(maskedValue.slice(0, -1));
+            setMaskedValue(String(maskedValue).slice(0, -1));
         }
     };
 
     const handleChanger = (event: ChangeEvent<HTMLInputElement>) => {
         const inputValue = clear(event.target.value);
-
         const mask = getMask(inputValue)
         if (mask === undefined) return
 
@@ -55,11 +56,18 @@ const MultiMask = ({ masks, ...rest }: Props) => {
         combinedResult = applyMask(combinedResult, String(mask));
 
         // Atualiza o estado com o valor mascarado
-        setMaskedValue(combinedResult.replaceAll(/#/g, ""));
+        setMaskedValue(combinedResult.replaceAll(/#/g, "_"));
         event.target.value = combinedResult.replaceAll(/#/g, "")
+        onChange ? onChange(event) : '';
     };
 
-    return <input value={maskedValue} onChange={handleChanger}  onKeyDown={handleKeyDown} {...rest} />;
+    const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
+        // Quando o campo recebe foco, definimos o valor como o valor mascarado
+        setMaskedValue(event.target.value)
+    };
+
+
+    return <input  {...rest} onChange={handleChanger} onFocus={handleFocus} onKeyDown={handleKeyDown} defaultValue={defaultValue} value={maskedValue} />;
 };
 
 export default MultiMask;
