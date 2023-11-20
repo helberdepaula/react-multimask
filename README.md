@@ -12,32 +12,36 @@ npm install react-multimask  # ou yarn add react-multimask
 ## Como Utilizar
 
 Importe o pacote:
-
+```JSX
 import MultiMask from 'react-multimask';
 
+## Exemplos de Máscaras:
 
-## Máscaras para CPF e CNPJ:
+- Máscaras para CPF e CNPJ:
  <MultiMask masks={['###.###.###.##','##.###.###/####-##']} />
 
-## Máscara para telefone:
+- Máscara para telefone:
  <MultiMask masks={['(##) # ####-####']} />
 
-## Máscara para CEP:
+- Máscara para CEP:
 <MultiMask masks={['#####-###']} />
 
-## Máscara para Número de Cartão de Crédito:
+- Máscara para Número de Cartão de Crédito:
 <MultiMask masks={['#### #### #### ####']} />
 
-## Máscara para Código de Segurança (CVV) de Cartão de Crédito:
+- Máscara para Código de Segurança (CVV) de Cartão de Crédito:
 <MultiMask masks={['###']} />
 
-## Máscara para data:
+- Máscara para data:
 <MultiMask masks={['##/##/##','##/##/####']} />
 
-## Máscara para Código de Barras:
+- Máscara para Código de Barras:
 <MultiMask masks={['###############']} />
 
-## Máscara para Número de Conta Bancária:
+- Máscara para Número de Conta Bancária:
 <MultiMask masks={['####-#']} />
-
+```
 Certifique-se de ajustar a importação e as máscaras conforme necessário para atender às especificidades do seu projeto. Simplifique sua experiência de desenvolvimento front-end com o React-Multimask!
+
+## License
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
