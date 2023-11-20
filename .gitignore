@@ -1,0 +1,11 @@
+*.log
+.DS_Store
+node_modules
+.cache
+dist
+/example/.npmignore
+/example/index.html
+/example/index.tsx
+/example/package.json
+/example/tsconfig.json
+/yarn.lock

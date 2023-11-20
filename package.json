@@ -1,0 +1,80 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "deploy":"npm version patch && npm publish"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "react-multimask",
+  "author": "Helber Lucio de Paula",
+  "description": "Módulo para a criação de máscaras múltipla no ambiente React.",
+  "keywords": [
+    "máscaras dinâmicas",
+    "React",
+    "componentes React",
+    "entrada de dados",
+    "formulários interativos",
+    "validação de entrada",
+    "módulo de máscaras",
+    "desenvolvimento web",
+    "front-end",
+    "biblioteca React",
+    "UI/UX",
+    "interação do usuário",
+    "programação JavaScript",
+    "campos de entrada formatados",
+    "controle de dados no React"
+  ],
+  "module": "dist/react-multimask.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/react-multimask.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/react-multimask.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^11.0.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "husky": "^8.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "size-limit": "^11.0.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  }
+}
