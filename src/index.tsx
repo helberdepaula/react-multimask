@@ -4,7 +4,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     masks: string[];
 }
 
-const MultiMask: React.FC<Props> = ({ masks, ...rest }: Props) => {
+const MultiMask = ({ masks, ...rest }: Props) => {
     const [maskedValue, setMaskedValue] = useState("");
 
     const applyMask = (inputValue: string, mask: string) => {
